@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Sort Visualizer</title>
+  <script type="module" crossorigin src="/assets/index-35a6de2b.js"></script>
+  <link rel="stylesheet" href="/assets/index-0f5ec9d1.css">
+</head>
+<body>
+    <div id="input_div">
+        <div class="input_line">
+        <label for="algorithm_type">Algorithm type: </label>
+        <select name="algorithm_type" id="algorithm_type">
+            <option value="selection_sort">Selection sort</option>
+            <option value="bubble_sort">Bubble sort</option>
+            <option value="merge_sort">Merge sort</option>
+        </select><br>
+        </div>
+
+        <div class="input_line">
+        <label for="sorting_speed">Sorting speed (ms): </label>
+        <input type="number" id="sorting_speed" name="sorting_speed" value="150"><br>
+        </div>
+
+        <div class="input_line">
+        <label for="arr_size">Array size: </label>
+        <input type="number" id="arr_size" name="arr_size" value="30"><br>
+        </div>
+
+        <div class="input_line">
+            <label for="max_val">Max value: </label>
+            <input type="number" id="max_val" name="max_val" value="100"><br>
+        </div>
+
+        <div class="input_line">
+        <button type="button" name="play_button" id="play_button">PLAY</button><br>
+        </div>
+
+        <div class="input_line">
+        <button type="button" name="reset_button" id="reset_button">RESET</button>
+        </div>
+
+        <div class="input_line">
+        <b>Time elapsed:</b> <div style="display: inline-block;" id="elapsed_time">0ms (0.0s)</div>
+        </div>
+    </div>
+
+    <div id="canvas_div">
+        <canvas id="bar_chart"></canvas>
+    </div>
+
+    
+</body>
+</html>
