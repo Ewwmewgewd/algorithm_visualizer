@@ -1,0 +1,52 @@
+body { display: flex; }
+
+#input_div {
+    display: inline-block;
+}
+
+.input_line {
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.144);
+}
+
+.input_line label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    padding: 3px;
+}
+
+.input_line input {
+    width: 160px;
+    height: 25px;
+    border: 0;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+.input_line select {
+    width: 167px;
+    height: 30px;
+    border: 0;
+    border-radius: 3px;
+}
+
+.input_line button {
+    background-color: transparent;
+    border: 0;
+    border-radius: 3px;
+    width: 100%;
+    height: 30px;
+    font-size: 105%;
+}
+
+.input_line:hover {
+    background-color: rgba(0, 0, 0, 0.301);
+}
+
+#canvas_div {
+    width: 75%;
+    margin: auto;
+}
