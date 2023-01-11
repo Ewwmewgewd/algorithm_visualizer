@@ -16,8 +16,11 @@ export async function sort_array(chart) {
         case 'merge_sort':
             merge_sort(chart).then(() => { is_running = false; });
             break;
+        case 'insertion_sort':
+            insertion_sort(chart).then(() => { is_running = false; });
+            break;
         default:
-            alert("Uh oh something broke...");
+            alert('Something broke...');
             return;
     }
 
@@ -182,4 +185,37 @@ async function merge(chart, left_i, middle_i, right_i) {
     animation.state_i = left_i;
     update_chart_color(chart, right_i);
     await sleep (animation.sorting_speed);
+}
+
+// Insertion sort.
+async function insertion_sort(chart) {
+    const arr_size = animation.array_size;
+
+    for (let i = 1; i < arr_size; i++) {
+        const key = animation.array[i];
+        let j = i - 1;
+
+        while (j >= 0 && animation.array[j] > key) {
+            animation.array[j + 1] = animation.array[j];
+            j = j - 1;
+
+            await sleep(animation.sorting_speed);
+            animation.state_i = j;
+            update_chart_color(chart);
+
+            if (!animation.is_playing) {
+                break;
+            }
+        }
+
+        update_chart_color(chart, j + 1);
+
+        animation.array[j + 1] = key;
+
+        if (!animation.is_playing) {
+            break;
+        }
+    }
+
+    update_chart(chart);
 }
