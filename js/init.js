@@ -54,7 +54,8 @@ reset_btn.addEventListener('click', reset_array);
 function reset_array() {
     animation.is_playing = false;
     animation.array = get_rand_array(animation.array_size, animation.max_value);
-    animation.state = 0;
+    animation.state_i = 0;
+    animation.state_j = 0;
 
     play_btn.innerHTML = 'PLAY';
     document.getElementById('elapsed_time').innerHTML = '0ms (0.0s)';

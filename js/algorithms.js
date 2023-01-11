@@ -48,8 +48,8 @@ function swap(x, y) {
 async function selection_sort(chart) {
     const arr_size = animation.array_size;
 
-    for (let i = animation.state; i < arr_size - 1; i++) {
-        animation.state = i;
+    for (let i = animation.state_i; i < arr_size - 1; i++) {
+        animation.state_i = i;
         
         let min_i = i;
 
@@ -76,10 +76,10 @@ async function selection_sort(chart) {
 async function bubble_sort(chart) {
     const arr_size = animation.array_size;
 
-    for (let i = animation.state; i < arr_size - 1; i++) {
-        for (let j = 0; j < arr_size - i - 1; j++) {
-            animation.state = j;
-            
+    for (let i = animation.state_i; i < arr_size - 1; i++) {
+        for (let j = animation.state_j; j < arr_size - i - 1; j++) {
+            animation.state_i = j;
+
             if (animation.array[j] > animation.array[j + 1]) {
                 update_chart_color(chart, j + 1);
                 swap(j, j + 1);
@@ -88,14 +88,20 @@ async function bubble_sort(chart) {
                 update_chart_color(chart);
             }
 
-            await sleep(animation.sorting_speed / arr_size - 1);
+            await sleep(animation.sorting_speed);
 
             if (!animation.is_playing) {
-                animation.state = i;
-                i = arr_size;
+                animation.state_j = j;
                 break;
             }
         }
+
+        if (!animation.is_playing) {
+            animation.state_i = i;
+            break;
+        }
+
+        animation.state_j = 0;
     }
 
     update_chart(chart);
@@ -116,8 +122,16 @@ async function merge_sort_rec(chart, left_i = 0, right_i = animation.array_size 
 
     const middle_i = left_i + parseInt((right_i - left_i) / 2);
 
+    
+
     await merge_sort_rec(chart, left_i, middle_i);
     await merge_sort_rec(chart, middle_i + 1, right_i);
+
+    if (!animation.is_playing) {
+        // Find a way to save animation state.
+        return;
+    }
+
     await merge(chart, left_i, middle_i, right_i);
 }
 
@@ -165,7 +179,7 @@ async function merge(chart, left_i, middle_i, right_i) {
         k++;
     }
 
-    animation.state = left_i;
+    animation.state_i = left_i;
     update_chart_color(chart, right_i);
     await sleep (animation.sorting_speed);
 }

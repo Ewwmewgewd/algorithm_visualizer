@@ -38,7 +38,7 @@ export function update_chart_color(chart, swap = -1) {
     chart.data.datasets[0].data = animation.array;
 
     const colors = new Array(animation.array_size).fill(animation.default_color);
-    colors[animation.state] = animation.index_color;
+    colors[animation.state_i] = animation.index_color;
     
     if (swap != -1)
         colors[swap] = animation.swap_color;
